@@ -1,4 +1,4 @@
-preferred-supported-locales: [en, fa]
+preferred-supported-locales: [en, fa, ja, it]
 synthetic-package: false
 output-dir: ./lib/src/l10n/generated
 arb-dir: ./lib/src/l10n

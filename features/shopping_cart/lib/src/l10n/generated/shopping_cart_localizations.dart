@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -8,15 +7,17 @@ import 'package:intl/intl.dart' as intl;
 
 import 'shopping_cart_localizations_en.dart';
 import 'shopping_cart_localizations_fa.dart';
+import 'shopping_cart_localizations_it.dart';
+import 'shopping_cart_localizations_ja.dart';
 
-/// Callers can lookup localized strings with an instance of ShoppingCartLocalizations returned
-/// by `ShoppingCartLocalizations.of(context)`.
+/// Callers can lookup localized strings with an instance of ShoppingCartLocalizations
+/// returned by `ShoppingCartLocalizations.of(context)`.
 ///
 /// Applications need to include `ShoppingCartLocalizations.delegate()` in their app's
-/// localizationDelegates list, and the locales they support in the app's
-/// supportedLocales list. For example:
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
 ///
-/// ```
+/// ```dart
 /// import 'generated/shopping_cart_localizations.dart';
 ///
 /// return MaterialApp(
@@ -31,14 +32,14 @@ import 'shopping_cart_localizations_fa.dart';
 /// Please make sure to update your pubspec.yaml to include the following
 /// packages:
 ///
-/// ```
+/// ```yaml
 /// dependencies:
 ///   # Internationalization support.
 ///   flutter_localizations:
 ///     sdk: flutter
 ///   intl: any # Use the pinned version from flutter_localizations
 ///
-///   # rest of dependencies
+///   # Rest of dependencies
 /// ```
 ///
 /// ## iOS Applications
@@ -91,7 +92,9 @@ abstract class ShoppingCartLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('fa')
+    Locale('fa'),
+    Locale('ja'),
+    Locale('it')
   ];
 
   /// No description provided for @shoppingCartPageTitle.
@@ -110,7 +113,7 @@ class _ShoppingCartLocalizationsDelegate extends LocalizationsDelegate<ShoppingC
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'fa'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'fa', 'it', 'ja'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_ShoppingCartLocalizationsDelegate old) => false;
@@ -123,6 +126,8 @@ ShoppingCartLocalizations lookupShoppingCartLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en': return ShoppingCartLocalizationsEn();
     case 'fa': return ShoppingCartLocalizationsFa();
+    case 'it': return ShoppingCartLocalizationsIt();
+    case 'ja': return ShoppingCartLocalizationsJa();
   }
 
   throw FlutterError(
